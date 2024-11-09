@@ -10,7 +10,7 @@ export default function App() {
   
   return (
     <Layout>
-      <Suspense>
+      <Suspense fallback={<p>Loading...</p>}>
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/catalog' element={<CatalogPage />} />

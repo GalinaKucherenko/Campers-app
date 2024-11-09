@@ -8,6 +8,12 @@ const campersSlice = createSlice({
         selectedCamper: null,  //деталі кемпера
         isLoading: false,
         error: null,
+        filters: {
+            location: null,
+            type: null,
+            AC: false,
+            kitchen: false,
+        }
     },
     reducers: {
         clearSelectedCamper: (state) => {
@@ -26,21 +32,21 @@ const campersSlice = createSlice({
                 state.items = action.payload;
             })
             .addCase(fetchCampers.rejected, (state, action) => {
-                state.isLoading = false,
-                    state.error = action.payload;
+                state.isLoading = false;
+                state.error = action.payload;
             })
             //обробка запиту кемперів за id
             .addCase(fetchCampersById.pending, (state) => {
-                state.isLoading = true,
-                    state.error = null;
+                state.isLoading = true;
+                state.error = null;
             })
             .addCase(fetchCampersById.fulfilled, (state, action) => {
-                state.isLoading = false,
-                    state.selectedCamper = action.payload;
+                state.isLoading = false;
+                state.selectedCamper = action.payload;
             })
             .addCase(fetchCampersById.rejected, (state, action) => {
-                state.isLoading = false,
-                    state.error = action.payload;
+                state.isLoading = false;
+                state.error = action.payload;
             });
     },
 });
